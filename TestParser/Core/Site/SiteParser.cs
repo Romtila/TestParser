@@ -27,11 +27,15 @@ namespace TestParser.Core.Site
         {
             var list = new List<string>();
 
-            var items = document.GetElementsByClassName(Constants.Constants.ItemTitle);
+            var items = document.GetElementsByClassName(Constants.Constants.Item);
 
             foreach (var item in items)
             {
-                list.Add(item.TextContent);
+                //list.Add(item.GetElementsByClassName(Constants.Constants.ItemTitle).FirstOrDefault()?.TextContent);//Название объявления
+                //list.Add(item.GetElementsByClassName(Constants.Constants.ItemPrice).FirstOrDefault()?.TextContent);//Цена
+                //list.Add(item.GetElementsByClassName(Constants.Constants.ItemCity).FirstOrDefault()?.TextContent);//Город
+                list.Add("https://www.avito.ru" + item.QuerySelectorAll("a").OfType<IHtmlAnchorElement>().FirstOrDefault()?.GetAttribute(Constants.Constants.ItemRef));//item.GetElementsByClassName(Constants.Constants.ItemRef).FirstOrDefault()?.TextContent);//Ссылка на объяву
+                list.Add(item.GetElementsByClassName(Constants.Constants.ItemPhotoRef).FirstOrDefault()?.TextContent);//Ссылка на фото
             }
 
             return list;

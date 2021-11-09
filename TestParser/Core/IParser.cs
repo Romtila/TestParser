@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AngleSharp.Html.Dom;
+using ParserDb.Models;
 
 namespace TestParser.Core
 {
@@ -7,6 +8,6 @@ namespace TestParser.Core
     {
         T Parse(IHtmlDocument document);
 
-        public List<string> ListParse(IHtmlDocument document);
+        public List<Item> ListParse(IHtmlDocument document);
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ParserDb.Models;
 
 namespace TestParser.Core
 {
@@ -71,7 +72,7 @@ namespace TestParser.Core
             Worker();
         }
 
-        public async Task<List<string>> GetListStart()
+        public async Task<List<Item>> GetListStart()
         {
             isActive = true;
             return await GetList();
@@ -106,9 +107,9 @@ namespace TestParser.Core
             isActive = false;
         }
 
-        private async Task<List<string>> GetList()
+        private async Task<List<Item>> GetList()
         {
-            var list = new List<string>();
+            var list = new List<Item>();
 
             for (int i = parserSettings.StartPoint; i <= parserSettings.EndPoint; i++)
             {

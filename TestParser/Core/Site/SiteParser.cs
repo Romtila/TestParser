@@ -2,6 +2,7 @@
 using System.Linq;
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
+using ParserDb.Models;
 
 namespace TestParser.Core.Site
 {
@@ -23,19 +24,22 @@ namespace TestParser.Core.Site
         }
 
         //Должны получать список названий объявлений
-        public List<string> ListParse(IHtmlDocument document)
+        public List<Item> ListParse(IHtmlDocument document)
         {
-            var list = new List<string>();
+            var list = new List<Item>();
 
             var items = document.GetElementsByClassName(Constants.Constants.Item);
 
             foreach (var item in items)
             {
-                //list.Add(item.GetElementsByClassName(Constants.Constants.ItemTitle).FirstOrDefault()?.TextContent);//Название объявления
-                //list.Add(item.GetElementsByClassName(Constants.Constants.ItemPrice).FirstOrDefault()?.TextContent);//Цена
-                //list.Add(item.GetElementsByClassName(Constants.Constants.ItemCity).FirstOrDefault()?.TextContent);//Город
-                list.Add("https://www.avito.ru" + item.QuerySelectorAll("a").OfType<IHtmlAnchorElement>().FirstOrDefault()?.GetAttribute(Constants.Constants.ItemRef));//item.GetElementsByClassName(Constants.Constants.ItemRef).FirstOrDefault()?.TextContent);//Ссылка на объяву
-                list.Add(item.GetElementsByClassName(Constants.Constants.ItemPhotoRef).FirstOrDefault()?.TextContent);//Ссылка на фото
+                list.Add(new Item()
+                {
+                    Title = item.GetElementsByClassName(Constants.Constants.ItemTitle).FirstOrDefault()?.TextContent,//Название объявления
+                    Price = item.GetElementsByClassName(Constants.Constants.ItemPrice).FirstOrDefault()?.TextContent,//Цена
+                    City = item.GetElementsByClassName(Constants.Constants.ItemCity).FirstOrDefault()?.TextContent,//Город
+                    ItemRef = "https://www.avito.ru" + item.QuerySelectorAll("a").OfType<IHtmlAnchorElement>().FirstOrDefault()?.GetAttribute(Constants.Constants.ItemRef),//Ссылка на объяву
+                    PhotoRef = item.GetElementsByClassName(Constants.Constants.ItemPhotoRef).FirstOrDefault()?.GetAttribute("src")//Ссылка на фото
+                });
             }
 
             return list;

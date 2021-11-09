@@ -18,7 +18,14 @@ namespace TestParser
 
             foreach (var item in itemList)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.Title);
+                Console.WriteLine(item.Price);
+                Console.WriteLine(item.City);
+                Console.WriteLine(item.ItemRef);
+                Console.WriteLine(item.PhotoRef);
+
+                Console.WriteLine();
+                Console.WriteLine();
             }
 
             Console.ReadKey();

@@ -50,6 +50,16 @@
             "rid": "win"
           }
         }
+      },
+      "ParserDb/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/ParserDb.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ParserDb.dll": {}
+        }
       }
     }
   },
@@ -163,11 +173,17 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ParserDb/1.0.0": {
+      "type": "project",
+      "path": "../ParserDb/ParserDb.csproj",
+      "msbuildProject": "../ParserDb/ParserDb.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "AngleSharp >= 0.16.1"
+      "AngleSharp >= 0.16.1",
+      "ParserDb >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -196,7 +212,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\romti\\source\\repos\\TestParser\\ParserDb\\ParserDb.csproj": {
+              "projectPath": "C:\\Users\\romti\\source\\repos\\TestParser\\ParserDb\\ParserDb.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

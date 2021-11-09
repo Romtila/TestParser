@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "naB07lA/KTPBGaUX9FZZQXh/FBf3SSzjway40B/DCR4couL7tIdBn8+MepqYrmepd6dJlqGd0gYa5fPGUTk2gw==",
+  "dgSpecHash": "1mvXGkDgxWqVmAIeyNWmDq19Fm/htmNS4mWQU5DYkx8VxFNayzboXP7orAp9ujnF2EeLlIF2MEOAhXlkSEQDLg==",
   "success": true,
   "projectFilePath": "C:\\Users\\romti\\source\\repos\\TestParser\\TestParser\\TestParser.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\romti\\.nuget\\packages\\anglesharp\\0.16.1\\anglesharp.0.16.1.nupkg.sha512",
+    "C:\\Users\\romti\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\romti\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\romti\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

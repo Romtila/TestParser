@@ -1593,21 +1593,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "ParserDb/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "EntityFramework": "6.4.4",
-          "Microsoft.EntityFrameworkCore": "5.0.12",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.12"
-        },
-        "compile": {
-          "bin/placeholder/ParserDb.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ParserDb.dll": {}
-        }
       }
     }
   },
@@ -6103,17 +6088,14 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
-    },
-    "ParserDb/1.0.0": {
-      "type": "project",
-      "path": "../ParserDb/ParserDb.csproj",
-      "msbuildProject": "../ParserDb/ParserDb.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "AngleSharp >= 0.16.1",
-      "ParserDb >= 1.0.0"
+      "EntityFramework >= 6.4.4",
+      "Microsoft.EntityFrameworkCore >= 5.0.12",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.12"
     ]
   },
   "packageFolders": {
@@ -6142,11 +6124,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "C:\\Users\\romti\\source\\repos\\TestParser\\ParserDb\\ParserDb.csproj": {
-              "projectPath": "C:\\Users\\romti\\source\\repos\\TestParser\\ParserDb\\ParserDb.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -6162,6 +6140,18 @@
           "AngleSharp": {
             "target": "Package",
             "version": "[0.16.1, )"
+          },
+          "EntityFramework": {
+            "target": "Package",
+            "version": "[6.4.4, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[5.0.12, )"
+          },
+          "Microsoft.EntityFrameworkCore.SqlServer": {
+            "target": "Package",
+            "version": "[5.0.12, )"
           }
         },
         "imports": [

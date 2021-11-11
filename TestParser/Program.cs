@@ -53,9 +53,7 @@ namespace TestParser
             }
 
             await File.WriteAllTextAsync("itemList.html", GetDataHtmlTable(itemList));
-
-            //var prs = new ProcessStartInfo(@"C:\Users\romti\AppData\Local\Yandex\YandexBrowser\Application\browser.exe");
-            //prs.Arguments
+            
             Process.Start(new ProcessStartInfo("itemList.html") {UseShellExecute = true});
             
             /*

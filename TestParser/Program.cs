@@ -48,8 +48,10 @@ namespace TestParser
                 }
             }
 
-
-
+            await File.WriteAllTextAsync("itemList.html", GetDataHtmlTable(itemList));
+            
+            Process.Start(new ProcessStartInfo("itemList.html") {UseShellExecute = true});
+          
             /*
             foreach (var item in itemList)
             {

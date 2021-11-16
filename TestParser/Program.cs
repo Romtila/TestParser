@@ -8,6 +8,7 @@ using TestParser.Core.Site;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using TestParser.Constants;
 
 namespace TestParser
 {
@@ -16,7 +17,7 @@ namespace TestParser
         static async Task Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            
+
             var parser = new ParserWorker<string[]>(new SiteParser(), new SiteSettings(1, 1));
 
             var itemList = await parser.GetListStart();
@@ -41,57 +42,39 @@ namespace TestParser
                 foreach (var item in db.Items)
                 {
                     itemList.Add(item);
-                 /*   Console.WriteLine(item.Title);
-                    Console.WriteLine(item.Price);
-                    Console.WriteLine(item.City);
-                    Console.WriteLine(item.ItemRef);
-                    Console.WriteLine(item.PhotoRef);
-
-                    Console.WriteLine();
-                    Console.WriteLine();*/
                 }
             }
 
             await File.WriteAllTextAsync("itemList.html", GetDataHtmlTable(itemList));
-            
-            Process.Start(new ProcessStartInfo("itemList.html") {UseShellExecute = true});
-            
-            /*
-            foreach (var item in itemList)
-            {
-                Console.WriteLine(item.Title);
-                Console.WriteLine(item.Price);
-                Console.WriteLine(item.City);
-                Console.WriteLine(item.ItemRef);
-                Console.WriteLine(item.PhotoRef);
 
-                Console.WriteLine();
-                Console.WriteLine();
-            }*/
+            Process.Start(new ProcessStartInfo("itemList.html") { UseShellExecute = true });
 
             Console.ReadKey();
         }
 
         private static string GetDataHtmlTable(List<Item> itemList)
         {
-            var htmlHeader = "<table style=\"font - size:14px\">" +
-                             "<tr style=\"font - size:14px\">" +
-                             "<th align='left'>Mac</th><th>&nbsp;</th>" +
-                             "<th align='left'>Name</th><th>&nbsp;</th>" +
-                             "<th align='left'>Dividend Value</th><th>&nbsp;</th>" +
-                             "<th align='left'>Currency</th><th>&nbsp;</th>" +
-                             "<th align='left'>Country of Incorp</th><th>&nbsp;</th>" +
+            var htmlHeader = "<table style=\"font-family: \"Lucida Sans Unicode\", \"Lucida Grande\", Sans-Serif;" +
+                             "text - align: left;" +
+                             "border - collapse: separate;" + 
+                             "border - spacing: 5px;" +
+                             "background: #ECE9E0;" +
+                             "color: #656665;" +
+                             "border: 16px solid #ECE9E0;" +
+                             "border - radius: 20px;\">" +
+                             
+                             $"{MyCSSStyle.tr}" +
+                             $"{MyCSSStyle.th}Название</th>" +
+                             $"{MyCSSStyle.th}Цена</th>" +
+                             $"{MyCSSStyle.th}Город</th>" +
+                             $"{MyCSSStyle.th}Ссылка на объявление</th>" +
+                             $"{MyCSSStyle.th}Ссылка на фото</th>" +
                              "</tr>";
             var msgBody = htmlHeader;
 
-            foreach (var t in itemList)
+            for (var i = itemList.Count - 1; i > itemList.Count - 51; i--)
             {
-                msgBody += "<tr><td style=\"font - size:14px\">"
-                                  + t.Title + "</td><td style=\"font - size:14px\">&nbsp;</td><td>"
-                                  + t.Price + "</td><td style=\"font - size:14px\">&nbsp;</td><td>"
-                                  + t.City + "</td><td style=\"font - size:14px\">&nbsp;</td><td>"
-                                  + t.ItemRef + "</td><td style=\"font - size:14px\">&nbsp;</td><td>"
-                                  + t.PhotoRef + "</td><td style=\"font - size:14px\">&nbsp;</td>";
+                msgBody = HtmlTableWithData(itemList[i], msgBody);
             }
 
             var sbFinish = new StringBuilder();
@@ -107,6 +90,18 @@ namespace TestParser
             msgBody = sbFinish.ToString();
 
             return msgBody;
+        }
+
+        private static string HtmlTableWithData(Item item, string str)
+        {
+            str += $"{MyCSSStyle.tr}" +
+                       $"{MyCSSStyle.td}<a href=\"{item.ItemRef}\">{item.Title}</a></td>" +
+                       $"{MyCSSStyle.td}{item.Price}</td>" +
+                       $"{MyCSSStyle.td}{item.City}</td>" +
+                       $"{MyCSSStyle.td}{item.ItemRef}</td>" +
+                       $"{MyCSSStyle.td}{item.PhotoRef}</td></tr>";
+
+            return str;
         }
     }
 }
